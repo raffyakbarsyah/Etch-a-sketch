@@ -1,5 +1,7 @@
 document.body.style.backgroundColor = '#9B1313';
 
+let currentColorMode = 'black';
+
 const mainContainer = document.createElement('div');
 Object.assign(mainContainer.style, {
   display: 'flex',
@@ -9,6 +11,54 @@ Object.assign(mainContainer.style, {
   padding: '50px',
 });
 document.body.appendChild(mainContainer);
+
+const colorContainer = document.createElement('div');
+Object.assign(colorContainer.style, {
+  display: 'flex',
+  gap: '0px',
+  justifyContent: 'center',
+  flexDirection: 'column',
+})
+document.body.appendChild(colorContainer);
+
+const blackMode = document.createElement('button');
+blackMode.textContent = 'Black Mode';
+Object.assign(blackMode.style, {
+  backgroundColor: 'black',
+  color: 'white',
+  width: '150px',
+  height: '50px',
+  borderRadius: '12px',
+  margin: '10px auto',
+  display: 'block',
+  cursor: 'pointer',
+  fontSize: '16px'
+})
+colorContainer.appendChild(blackMode);
+
+const randomMode = document.createElement('button');
+randomMode.textContent = 'Random Mode';
+Object.assign(randomMode.style, {
+  backgroundColor: 'black',
+  color: 'white',
+  width: '150px',
+  height: '50px',
+  borderRadius: '12px',
+  margin: '10px auto',
+  display: 'block',
+  cursor: 'pointer',
+  fontSize: '16px'
+})
+colorContainer.appendChild(randomMode);
+
+blackMode.addEventListener('click', () => {
+  currentColorMode = 'black';
+  createGrid(50);
+});
+randomMode.addEventListener('click', () => {
+  currentColorMode = 'random';
+  createGrid(50);
+});
 
 const inputButton = document.createElement('button');
 inputButton.textContent = 'Change Grid Size';
@@ -50,13 +100,26 @@ function createGrid(squaresPerSide) {
       boxSizing: 'border-box',
     });
     divSquare.addEventListener ('mouseover', () => {
-      divSquare.style.backgroundColor = 'black';
+      if (currentColorMode === 'black') {
+        divSquare.style.backgroundColor = 'black';
+      }
+
+      else {
+        divSquare.style.backgroundColor = getRandomColor();
+      }
     });
     divContainer.appendChild(divSquare);
   }
 }
 
-createGrid(10);
+function getRandomColor() {
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+  return `rgb(${r}, ${g}, ${b})`;
+}
+
+createGrid(50);
 
 inputButton.addEventListener ('click', () => {
   let input = prompt("Between 1- 100");
@@ -70,7 +133,6 @@ inputButton.addEventListener ('click', () => {
     alert('Please insert number between 1 to 100');
   }
 });
-
 
 const resetButton = document.createElement('button');
 resetButton.textContent = 'Reset Grid';
@@ -88,6 +150,5 @@ Object.assign(resetButton.style, {
 mainContainer.appendChild(resetButton);
 
 resetButton.addEventListener ('click', () => {
-  createGrid(10);
-  divSquare.style.backgroundColor = '#FFA896';
+  createGrid(50);
 });
