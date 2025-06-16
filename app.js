@@ -1,16 +1,29 @@
+document.body.style.backgroundColor = '#9B1313';
+
+const mainContainer = document.createElement('div');
+Object.assign(mainContainer.style, {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  gap: '40px',
+  padding: '50px',
+});
+document.body.appendChild(mainContainer);
+
 const inputButton = document.createElement('button');
-inputButton.textContent = 'Click Me!';
+inputButton.textContent = 'Change Grid Size';
 Object.assign(inputButton.style, {
   backgroundColor: 'black',
   color: 'white',
   width: '150px',
   height: '50px',
+  borderRadius: '12px',
   margin: '20px auto',
   display: 'block',
   cursor: 'pointer',
   fontSize: '16px'
 });
-document.body.appendChild(inputButton);
+mainContainer.appendChild(inputButton);
 
 const divContainer = document.createElement('div');
 Object.assign(divContainer.style, {
@@ -22,7 +35,7 @@ Object.assign(divContainer.style, {
   border: '5px solid #38000A',
   backgroundColor: '#FFA896',
 });
-document.body.appendChild(divContainer);
+mainContainer.appendChild(divContainer);
 
 function createGrid(squaresPerSide) {
   divContainer.innerHTML = ''; // Clear existing grid
@@ -56,4 +69,25 @@ inputButton.addEventListener ('click', () => {
   else {
     alert('Please insert number between 1 to 100');
   }
+});
+
+
+const resetButton = document.createElement('button');
+resetButton.textContent = 'Reset Grid';
+Object.assign(resetButton.style, {
+  backgroundColor: 'black',
+  color: 'white',
+  width: '150px',
+  height: '50px',
+  borderRadius: '12px',
+  margin: '20px auto',
+  display: 'block',
+  cursor: 'pointer',
+  fontSize: '16px'
+});
+mainContainer.appendChild(resetButton);
+
+resetButton.addEventListener ('click', () => {
+  createGrid(10);
+  divSquare.style.backgroundColor = '#FFA896';
 });
