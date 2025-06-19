@@ -2,7 +2,7 @@
 
 ## 📌 Introduction
 
-This project is a browser-based sketchpad that mimics the behavior of an Etch-A-Sketch. It was created as a DOM manipulation exercise as part of [The Odin Project](https://www.theodinproject.com/). The goal was to practice dynamic HTML element creation, event handling, and layout with Flexbox.
+This project is a browser-based sketchpad that mimics the behavior of an Etch-A-Sketch. It was created as a DOM manipulation exercise as part of [The Odin Project](https://www.theodinproject.com/). 
 
 ---
 
